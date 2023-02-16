@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class DummyData extends Model
+{
+    use HasFactory;
+    protected $table = 'dummy_datas';
+    protected $primaryKey = 'id';
+
+    protected $fillable = ['name', 'details'];
+}
