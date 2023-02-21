@@ -8,6 +8,8 @@ use App\Http\Controllers\QbController;
 use App\Http\Controllers\FileUpController;
 use App\Http\Controllers\ProductController;
 
+use App\Models\Product;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,3 +47,60 @@ Route::get('/qb2', [QbController::class, 'test']);
 /*--------------------CRUD LARAVEL------------------------------- */
 
 Route::resource('products', ProductController::class);
+Route::get('/ter', function(){
+        $fre = Product::select('name', 'detail')->where('name', 'like', '%'.'F'.'%' )->get()->toArray();
+        echo "<pre>";
+        print_r($fre);
+});
+Route::get('/terw/{o?}',function($o){
+    $users1 = Array(
+        [
+            'name'=>'john',
+            'email'=>'john@gmail.com'
+        ],
+
+        [
+            'name' => 'tarun',
+            'email' => 'tarun@gmail.com'
+        ],
+
+        [
+            'name' => 'umesh',
+            'email' => 'umesh@gmail.com'
+        ],
+
+        [
+            'name' => 'rakesh',
+            'email' => 'rakesh @gmail.com'
+        ],
+
+        [
+            'name' => 'rafiq',
+            'email' => 'rafiq@gmail.com'
+        ],
+
+        [
+            'name' => 'jonita',
+            'email' => 'jonita@gmail.com'
+        ],
+
+        [
+            'name' => 'faizan',
+            'email' => 'faizan@gmail.com'
+        ]
+    );
+
+    $lon = array_column($users1, 'name');
+    $arr1 = array();
+    foreach($users1 as $k=>$lons){
+        $findme = $o;
+        $pos = strpos($lons['name'], $findme);
+        if ($pos === 0) {
+            array_push($arr1, $lons);
+        }else {
+            continue;
+        }
+    }
+    echo "<pre>";
+    print_r($arr1);
+});
