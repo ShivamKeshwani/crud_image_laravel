@@ -57,8 +57,6 @@ Artisan::command('say:hello {name}', function ($name) {
             'email' => 'faizan@gmail.com'
         ]
     );
-
-    $lon = array_column($users1, 'name');
     $arr1 = array();
     foreach($users1 as $k=>$lons){
         $findme = $name;
